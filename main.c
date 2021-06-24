@@ -176,7 +176,10 @@ int main()
                                 case 0:
                                     equstr(function_arg, tmp_function_arg);
                                     clear_str(function_arg);
-                                    equstr(lang_arg_lens(tmp_function_arg), function_arg);
+                                    if (is_string(tmp_function_arg))
+                                    {
+                                        equstr(lang_arg_lens(tmp_function_arg), function_arg);
+                                    }
                                     break;
                             }
                         }
