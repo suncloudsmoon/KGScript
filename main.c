@@ -125,8 +125,8 @@ char *lang_arg_lens(char *s)
     if (is_string(s))
     {
         itoa(strlen(s) - 2, output, 10);
-        return output;
     }
+    return output;
 }
 
 int main()
@@ -176,10 +176,7 @@ int main()
                                 case 0:
                                     equstr(function_arg, tmp_function_arg);
                                     clear_str(function_arg);
-                                    if (is_string(tmp_function_arg))
-                                    {
-                                        equstr(lang_arg_lens(tmp_function_arg), function_arg);
-                                    }
+                                    equstr(lang_arg_lens(tmp_function_arg), function_arg);
                                     break;
                             }
                         }
