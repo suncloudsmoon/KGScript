@@ -157,7 +157,7 @@ int main()
     char function_arg_function_name[MAX_FUNCTION_NAME_LENGTH] = "\0";
     char old_function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
     printf("> ");
-    scanf("%s", input);
+    scanf("%[^\n]", input);
     for (i = 0; i < FUNCTION_NAME_COUNT; i++)
     {
         clear_str(function_name);
