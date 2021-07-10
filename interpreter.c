@@ -98,7 +98,7 @@ void start_interpreter(interpreter_t *interpreter)
 	{ "lens" };
 
 	// For debugging, a constant value is set to input
-	char input[MAX_STRING_LENGTH] = "prints(\"Example\")";
+	char input[MAX_STRING_LENGTH];
 	char function_name[MAX_FUNCTION_NAME_LENGTH] = "\0";
 	char function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
 	char tmp_function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
@@ -107,7 +107,7 @@ void start_interpreter(interpreter_t *interpreter)
 
 	printf("> ");
 	// For debugging, it is commented out
-//	scanf("%[^\n]", input);
+	scanf("%[^\n]", input);
 
 	for (i = 0; i < FUNCTION_NAME_COUNT; i++)
 	{
