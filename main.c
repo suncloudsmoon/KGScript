@@ -5,7 +5,7 @@
 #define TRUE (1 == 1)
 #define FALSE (1 == 0)
 
-#define FUNCTION_NAME_COUNT 2
+#define FUNCTION_NAME_COUNT 3
 #define FUNCTION_ARG_FUNCTION_NAME_COUNT 1
 #define MAX_FUNCTION_NAME_LENGTH 247
 #define MAX_FUNCTION_ARG_LENGTH 127
@@ -119,6 +119,16 @@ void lang_printi(int i)
     printf("%d\n", i);
 }
 
+void lang_system(char *s)
+{
+    char output[MAX_STRING_LENGTH] = "\0";
+    if (is_string(s))
+    {
+        strr(s, output, 0, strlen(s) - 1);
+        system(output);
+    }
+}
+
 char *lang_arg_lens(char *s)
 {
     char *output = malloc(MAX_STRING_LENGTH);
@@ -134,7 +144,8 @@ int main()
     int i, j;
     char function_names[FUNCTION_NAME_COUNT][MAX_FUNCTION_NAME_LENGTH] = {
         "prints",
-        "printi"
+        "printi",
+        "system"
     };
     char function_arg_function_names[FUNCTION_ARG_FUNCTION_NAME_COUNT][MAX_FUNCTION_NAME_LENGTH] = {
         "lens"
@@ -197,6 +208,9 @@ int main()
                         {
                             lang_printi(atoi(function_arg));
                         }
+                        break;
+                    case 2:
+                        lang_system(function_arg);
                         break;
                 }
             }
