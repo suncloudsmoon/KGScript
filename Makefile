@@ -4,7 +4,7 @@ CC=gcc
 
 all: KGScript
 
-KGScript: main.c
-	$(CC) main.c -o KGScript
+KGScript: main.c interpreter.c
+	$(CC) main.c interpreter.c -o KGScript
 	objcopy --remove-section .comment KGScript
 	objcopy --remove-section .eh_frame KGScript
