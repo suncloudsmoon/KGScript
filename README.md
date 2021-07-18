@@ -10,5 +10,5 @@ Usage: `./KGScript file.kgs [options]`
 # Future Features
 1. Reading binary files
 2. Decompiling binary files
-# Compiling the scripting language
+# Compiling
 You can compile the scripting language using `make` command.
