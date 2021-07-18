@@ -1,5 +1,5 @@
 # Usage
-`KGScript file.kgs [options]`
+Usage: `KGScript file.kgs [options]`
 # Examples
 1. `prints("Example")`
 2. `printi(15)`
