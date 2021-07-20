@@ -93,7 +93,6 @@ void read_bin(char *filename, bool decompile_bool)
     FILE *fp = fopen(filename, "rb");
     int i;
     int function_code;
-    int tmp_int = 0;
     char function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
     char tmp_function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
     char tmp_hex[MAX_FILE_LENGTH] = "\0";
@@ -103,21 +102,14 @@ void read_bin(char *filename, bool decompile_bool)
     fclose(fp);
     for (i = 0; i < strlen(file_str); i++)
     {
-        sprintf(tmp_hex, "%x", file_str[i]);
+        sprintf(tmp_hex, "%02x", file_str[i]);
         hex_array[i][0] = tmp_hex[0];
-        if (strlen(tmp_hex) == 2)
-        {
-            hex_array[i][1] = tmp_hex[1];
-        }
+        hex_array[i][1] = tmp_hex[1];
     }
     for (i = 0; i < strtol(hex_array[2], NULL, 16); i++)
     {
-        tmp_function_arg[i + tmp_int] = hex_array[i + 3][0];
-        if (strlen(hex_array[i + 3]) == 2)
-        {
-            tmp_function_arg[i + 1 + tmp_int] = hex_array[i + 3][1];
-            tmp_int++;
-        }
+        tmp_function_arg[(2 * i) - i] = hex_array[i + 3][0];
+        tmp_function_arg[(2 * i) - i + 1] = hex_array[i + 3][1];
     }
     switch (strtol(hex_array[1], NULL, 16))
     {
