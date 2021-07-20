@@ -7,8 +7,7 @@ Usage: `./KGScript file.kgs [options]`
 4. `system("ls")`
 # Incomplete Features
 1. Writing binary files: Incomplete in function arguments
-# Future Features
-1. Reading binary files
-2. Decompiling binary files
+2. Reading binary files
+3. Decompiling binary files
 # Compiling
 You can compile the scripting language using `make` command.
