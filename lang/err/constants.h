@@ -3,5 +3,5 @@
 #endif
 
 #ifdef _LANG_ERR_CONSTANTS_H
-# define ERR_NAME_COUNT 2
+# define ERR_NAME_COUNT 3
 #endif

@@ -5,7 +5,8 @@
 #ifdef _ERR_ERR_H
 typedef enum {
     function_not_found = 0,
-    not_string = 1
+    function_arg_not_found = 1,
+    not_string = 2
 } err_code;
 
 extern char *get_err(err_code err);

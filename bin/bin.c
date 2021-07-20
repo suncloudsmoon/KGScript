@@ -5,9 +5,15 @@
 #include <string.h>
 
 #include "../functions.h"
-#include "strhex.h"
 #include "../lang/constants.h"
 #include "../lang/names.h"
+#include "../lang/lang.h"
+#include "../lang/decompile/lang_decompile.h"
+#include "strhex.h"
+
+int __function_code__;
+
+char __function_arg__[MAX_FUNCTION_ARG_LENGTH] = "\0";
 
 void write_bin(char *filename, char *str)
 {
@@ -82,8 +88,58 @@ void write_bin(char *filename, char *str)
     fclose(fp);
 }
 
-void read_bin(char *filename)
+void read_bin(char *filename, bool decompile_bool)
 {
     FILE *fp = fopen(filename, "rb");
+    int i;
+    int function_code;
+    int tmp_int = 0;
+    char function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
+    char tmp_function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
+    char tmp_hex[MAX_FILE_LENGTH] = "\0";
+    char hex_array[MAX_FILE_LENGTH][3];
+    char file_str[MAX_FILE_LENGTH] = "\0";
+    fread(file_str, sizeof(file_str), 1, fp);
     fclose(fp);
+    for (i = 0; i < strlen(file_str); i++)
+    {
+        sprintf(tmp_hex, "%x", file_str[i]);
+        hex_array[i][0] = tmp_hex[0];
+        if (strlen(tmp_hex) == 2)
+        {
+            hex_array[i][1] = tmp_hex[1];
+        }
+    }
+    for (i = 0; i < strtol(hex_array[2], NULL, 16); i++)
+    {
+        tmp_function_arg[i + tmp_int] = hex_array[i + 3][0];
+        if (strlen(hex_array[i + 3]) == 2)
+        {
+            tmp_function_arg[i + 1 + tmp_int] = hex_array[i + 3][1];
+            tmp_int++;
+        }
+    }
+    switch (strtol(hex_array[1], NULL, 16))
+    {
+        case 1:
+            itoa(strtol(tmp_function_arg, NULL, 16), function_arg, 10);
+            break;
+        case 2:
+            break;
+    }
+    function_code = strtol(hex_array[0], NULL, 16) - 1;
+    if (decompile_bool == false)
+    {
+        lang(function_code, function_arg);
+    }
+    else
+    {
+        equstr(function_arg, __function_arg__);
+    }
+}
+
+void decompile_bin(char *filename)
+{
+    read_bin(filename, true);
+    lang_decompile(__function_code__, __function_arg__);
 }

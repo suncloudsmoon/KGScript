@@ -10,11 +10,14 @@ C_SOURCES= \
 	lang/names.c \
 	lang/lang.c \
 	lang/lang_arg.c \
+	lang/funcgen.c \
 	lang/functions/lang_functions.c \
 	lang/functions/lang_arg_functions.c \
 	lang/err/lang_err.c \
 	lang/err/names.c \
+	lang/decompile/lang_decompile.c \
 	err/err.c \
+	decompile/decompile.c \
 	bin/bin.c \
 	bin/strhex.c
 

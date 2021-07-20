@@ -1,7 +1,7 @@
-#ifndef _STRHEX_H
-# define _STRHEX_H
+#ifndef _BIN_STRHEX_H
+# define _BIN_STRHEX_H
 #endif
 
-#ifdef _STRHEX_H
+#ifdef _BIN_STRHEX_H
 extern char *strhex(char *str);
 #endif

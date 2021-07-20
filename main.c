@@ -32,10 +32,17 @@ int main(int argc, char **argv)
         }
         else if (argc == 3 && strcmp(argv[1], "read_bin") == false)
         {
-            read_bin(argv[2]);
+            read_bin(argv[2], false);
+        }
+        else if (argc == 3 && strcmp(argv[1], "decompile_bin") == false)
+        {
+            decompile_bin(argv[2]);
         }
         else if (argc == 2)
         {
+            FILE *fp = fopen(argv[1], "r");
+            fread(file_str, sizeof(file_str), 1, fp);
+            fclose(fp);
             for (i = 0; i < FUNCTION_NAME_COUNT; i++)
             {
                 clear_str(function_name);
@@ -76,7 +83,6 @@ int main(int argc, char **argv)
                 else if (i == FUNCTION_NAME_COUNT - 1 && tmp_bool == false)
                 {
                     lang_err(function_not_found);
-                    break;
                 }
             }
         }
