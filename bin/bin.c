@@ -91,6 +91,11 @@ void write_bin(char *filename, char *str)
 void read_bin(char *filename, bool decompile_bool)
 {
     FILE *fp = fopen(filename, "rb");
+    if (fp == NULL)
+    {
+        perror(filename);
+        exit(EXIT_FAILURE);
+    }
     int i;
     int function_code;
     char function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";

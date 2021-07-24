@@ -26,6 +26,11 @@ int main(int argc, char **argv)
         if (argc == 4 && strcmp(argv[2], "write_bin") == false)
         {
             FILE *fp = fopen(argv[1], "r");
+            if (fp == NULL)
+            {
+                perror(argv[1]);
+                exit(EXIT_FAILURE);
+            }
             fread(file_str, sizeof(file_str), 1, fp);
             write_bin(argv[3], file_str);
             fclose(fp);
@@ -41,6 +46,11 @@ int main(int argc, char **argv)
         else if (argc == 2)
         {
             FILE *fp = fopen(argv[1], "r");
+            if (fp == NULL)
+            {
+                perror(argv[1]);
+                exit(EXIT_FAILURE);
+            }
             fread(file_str, sizeof(file_str), 1, fp);
             fclose(fp);
             for (i = 0; i < FUNCTION_NAME_COUNT; i++)
