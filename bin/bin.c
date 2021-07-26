@@ -5,10 +5,12 @@
 #include <string.h>
 
 #include "../functions.h"
+#include "../decompile/decompile.h"
 #include "../lang/constants.h"
 #include "../lang/names.h"
 #include "../lang/lang.h"
 #include "../lang/decompile/lang_decompile.h"
+#include "../lang/funcgen.h"
 #include "strhex.h"
 
 int __function_code__;
@@ -25,8 +27,8 @@ void write_bin(char *filename, char *str)
     char function_name[MAX_FUNCTION_NAME_LENGTH] = "\0";
     char function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
     char tmp_function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
-    char _tmp_str_[MAX_FILE_LENGTH] = "\0";
     char tmp_str[2 * MAX_FILE_LENGTH] = "\0";
+    char _tmp_str_[MAX_FILE_LENGTH] = "\0";
     char tmp_hex[2 * MAX_FILE_LENGTH] = "\0";
     char tmp_output[MAX_FILE_LENGTH] = "\0";
     for (i = 0; i < FUNCTION_NAME_COUNT; i++)
@@ -88,6 +90,36 @@ void write_bin(char *filename, char *str)
     fclose(fp);
 }
 
+void write_elf(char *filename, char *str)
+{
+    int i;
+    char function_name[MAX_FUNCTION_NAME_LENGTH] = "\0";
+    char function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
+    char tmp_str[MAX_STRING_LENGTH] = "\0";
+    char tmp_output[MAX_STRING_LENGTH] = "\0";
+    for (i = 0; i < FUNCTION_NAME_COUNT; i++)
+    {
+        clear_str(function_name);
+        strr(str, function_name, -1, strlen(function_names[i]));
+        strr(str, function_arg, strlen(function_names[i]), strlen(str) - 1);
+    }
+    char arr[FUNCTION_NAME_COUNT + 2][MAX_STRING_LENGTH / (FUNCTION_NAME_COUNT + 2)] = {
+        "#include <stdio.h>",
+        "void prints(char *s) { puts(s); }",
+        "void printi(int i) { printf(\"%d\\n\", i); }",
+        "void system(char *s) { system(s); }"
+    };
+    sprintf(tmp_output, "%s\n%s\n%s\n%s\nint main() { %s; }", arr[0], arr[1], arr[2], arr[3], str);
+    char output[strlen(tmp_output)];
+    equstr(tmp_output, output);
+    FILE *fp = fopen("tmp.c", "wb");
+    fwrite(output, sizeof(output), 1, fp);
+    fclose(fp);
+    sprintf(tmp_str, "gcc tmp.c -o %s", filename);
+    system(tmp_str);
+    remove("tmp.c");
+}
+
 void read_bin(char *filename, bool decompile_bool)
 {
     FILE *fp = fopen(filename, "rb");
@@ -131,6 +163,7 @@ void read_bin(char *filename, bool decompile_bool)
     }
     else
     {
+        __function_code__ = function_code;
         equstr(function_arg, __function_arg__);
     }
 }

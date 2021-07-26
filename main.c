@@ -35,6 +35,18 @@ int main(int argc, char **argv)
             write_bin(argv[3], file_str);
             fclose(fp);
         }
+        else if (argc == 4 && strcmp(argv[2], "write_elf") == false)
+        {
+            FILE *fp = fopen(argv[1], "r");
+            if (fp == NULL)
+            {
+                perror(argv[1]);
+                exit(EXIT_FAILURE);
+            }
+            fread(file_str, sizeof(file_str), 1, fp);
+            write_elf(argv[3], file_str);
+            fclose(fp);
+        }
         else if (argc == 3 && strcmp(argv[1], "read_bin") == false)
         {
             read_bin(argv[2], false);
