@@ -90,7 +90,7 @@ void write_bin(char *filename, char *str)
     fclose(fp);
 }
 
-void write_elf(char *filename, char *str)
+void write_elf(char *filename, char *str, bool keep_tmp)
 {
     int i;
     char function_name[MAX_FUNCTION_NAME_LENGTH] = "\0";
@@ -103,13 +103,7 @@ void write_elf(char *filename, char *str)
         strr(str, function_name, -1, strlen(function_names[i]));
         strr(str, function_arg, strlen(function_names[i]), strlen(str) - 1);
     }
-    char arr[FUNCTION_NAME_COUNT + 2][MAX_STRING_LENGTH / (FUNCTION_NAME_COUNT + 2)] = {
-        "#include <stdio.h>",
-        "void prints(char *s) { puts(s); }",
-        "void printi(int i) { printf(\"%d\\n\", i); }",
-        "void system(char *s) { system(s); }"
-    };
-    sprintf(tmp_output, "%s\n%s\n%s\n%s\nint main() { %s; }", arr[0], arr[1], arr[2], arr[3], str);
+    sprintf(tmp_output, "%s\n%s\n%s\n%s\nint main() { %s; }", cfunctions[0], cfunctions[1], cfunctions[2], cfunctions[3], str);
     char output[strlen(tmp_output)];
     equstr(tmp_output, output);
     FILE *fp = fopen("tmp.c", "wb");
@@ -117,7 +111,9 @@ void write_elf(char *filename, char *str)
     fclose(fp);
     sprintf(tmp_str, "gcc tmp.c -o %s", filename);
     system(tmp_str);
-    remove("tmp.c");
+    if (keep_tmp == false) {
+        remove("tmp.c");
+    }
 }
 
 void read_bin(char *filename, bool decompile_bool)
