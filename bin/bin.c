@@ -47,11 +47,13 @@ void write_bin(char *filename, char *str)
                     itoa(atoi(function_arg), tmp_str, 16);
                     tmp_index += 3;
                     output_length++;
-                    tmp_output[0] = i + 1;
+                    tmp_output[0] = ((i + 1) / 256) + 1;
                     output_length++;
-                    tmp_output[1] = 1;
+                    tmp_output[1] = i + 1;
                     output_length++;
-                    tmp_output[2] = (int)(((float)(strlen(tmp_str)) / 2) + 0.5);
+                    tmp_output[2] = 1;
+                    output_length++;
+                    tmp_output[3] = (int)(((float)(strlen(tmp_str)) / 2) + 0.5);
                     output_length += (int)(((float)(strlen(tmp_str)) / 2) + 0.5);
                     for (j = 0; j < (int)(((float)(strlen(tmp_str)) / 2) + 0.5); j++)
                     {
@@ -65,11 +67,13 @@ void write_bin(char *filename, char *str)
                 {
                     tmp_index += 3;
                     output_length++;
-                    tmp_output[0] = i + 1;
+                    tmp_output[0] = ((i + 1) / 256) + 1;
                     output_length++;
-                    tmp_output[1] = 2;
+                    tmp_output[1] = i + 1;
                     output_length++;
-                    tmp_output[2] = strlen(tmp_str);
+                    tmp_output[2] = 2;
+                    output_length++;
+                    tmp_output[3] = strlen(tmp_str);
                     strr(function_arg, _tmp_str_, 0, strlen(function_arg) - 1);
                     equstr(strhex(_tmp_str_), tmp_str);
                     output_length += strlen(tmp_str);
