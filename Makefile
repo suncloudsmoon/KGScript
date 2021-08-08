@@ -26,3 +26,9 @@ KGScript: $(C_SOURCES)
 	$(CC) $(C_SOURCES) -o KGScript
 	objcopy --remove-section .comment KGScript
 	objcopy --remove-section .eh_frame KGScript
+
+install:
+	cp KGScript /usr/bin/KGScript
+
+uninstall:
+	rm /usr/bin/KGScript
