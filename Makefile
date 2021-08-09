@@ -19,7 +19,6 @@ C_SOURCES= \
 	err/err.c \
 	decompile/decompile.c \
 	bin/bin.c \
-	bin/ltoc.c \
 	bin/strhex.c
 
 KGScript: $(C_SOURCES)

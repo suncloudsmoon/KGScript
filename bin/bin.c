@@ -11,7 +11,6 @@
 #include "../lang/lang.h"
 #include "../lang/decompile/lang_decompile.h"
 #include "../lang/funcgen.h"
-#include "ltoc.h"
 #include "strhex.h"
 
 int __function_code__;
@@ -93,24 +92,6 @@ void write_bin(char *filename, char *str)
     }
     fwrite(output, sizeof(output), 1, fp);
     fclose(fp);
-}
-
-void write_elf(char *filename, char *str, bool keep_tmp)
-{
-    char tmp_str[MAX_FILE_LENGTH] = "\0";
-    char tmp_output[MAX_FILE_LENGTH] = "\0";
-    sprintf(tmp_output, "%s", ltoc(str));
-    char output[strlen(tmp_output)];
-    equstr(tmp_output, output);
-    FILE *fp = fopen("tmp.c", "wb");
-    fwrite(output, sizeof(output), 1, fp);
-    fclose(fp);
-    sprintf(tmp_str, "gcc tmp.c -o %s", filename);
-    system(tmp_str);
-    if (keep_tmp == false)
-    {
-        remove("tmp.c");
-    }
 }
 
 void read_bin(char *filename, bool decompile_bool)
