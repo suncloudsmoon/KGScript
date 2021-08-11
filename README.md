@@ -9,7 +9,5 @@ Usage: `./KGScript file.kgs [options]`
 1. Writing binary files: Incomplete in function arguments
 2. Reading binary files
 3. Decompiling binary files
-# Future Features
-1. Writing ELF binary files using GCC
 # Compiling
 You can compile the scripting language using `make` command.
