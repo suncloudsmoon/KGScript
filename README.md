@@ -7,7 +7,7 @@ Usage: `./KGScript file.kgs [options]`
 4. `printi(addi(3,5,15))`
 5. `system("ls")`
 # Documentation
-Documentation of KGScript is in [GitBooks](https://ariankg.gitbook.io/kgscript-documentation/ "KGScript Documentation")
+Documentation of KGScript is in [KGIO](https://ariankg.github.io/kgscript-documentation/kgscript-documentation.html "KGIO Documentation")
 # Incomplete Features
 1. Writing binary files: Incomplete in function arguments
 2. Reading binary files
