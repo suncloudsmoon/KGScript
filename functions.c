@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "lang/constants.h"
@@ -30,6 +31,82 @@ char *itoa(int value, char *str, int base)
         char tmp = *low;
         *low++ = *ptr;
         *ptr-- = tmp;
+    }
+    return output;
+}
+
+char *strg(char *str, char c)
+{
+    int i = 0;
+    char *output = malloc(sizeof(char *));
+    while (str[i])
+    {
+        if (str[i] == c && str[i - 1] != c)
+        {
+            return output;
+            break;
+        }
+        else
+        {
+            output[i] = str[i];
+        }
+        i++;
+    }
+}
+
+char *strga(char *str, char c)
+{
+    int i = 0, j = 0;
+    bool b = false;
+    char *output = malloc(sizeof(char *));
+    while (str[i])
+    {
+        if (str[i] == c && str[i - 1] != c && b == false)
+        {
+            b = true;
+        }
+        else if (b)
+        {
+            output[j] = str[i];
+            j++;
+        }
+        i++;
+    }
+    return output;
+}
+
+char *strgn(char *str, char c, int n)
+{
+    int i = 0, j = 0, k = 0;
+    char *output = malloc(MAX_STRING_LENGTH);
+    while (str[i])
+    {
+        if (str[i] == c && str[i - 1] != c)
+        {
+            k++;
+        }
+        else if (n == k)
+        {
+            output[j] = str[i];
+            j++;
+        }
+        i++;
+    }
+    return output;
+    free(output);
+}
+
+int strgnl(char *str, char c)
+{
+    int i = 0;
+    int output = 0;
+    while (str[i])
+    {
+        if (str[i] == c && str[i - 1] != c)
+        {
+            output++;
+        }
+        i++;
     }
     return output;
 }

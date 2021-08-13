@@ -15,5 +15,25 @@ void lang_arg(int function_code, char *str)
             clear_str(str);
             equstr(lang_arg_lens(tmp_str), str);
             break;
+        case 1:
+            equstr(str, tmp_str);
+            clear_str(str);
+            equstr(lang_arg_addi(tmp_str), str);
+            break;
+        case 2:
+            equstr(str, tmp_str);
+            clear_str(str);
+            equstr(lang_arg_subi(tmp_str), str);
+            break;
+        case 3:
+            equstr(str, tmp_str);
+            clear_str(str);
+            equstr(lang_arg_muli(tmp_str), str);
+            break;
+        case 4:
+            equstr(str, tmp_str);
+            clear_str(str);
+            equstr(lang_arg_divi(tmp_str), str);
+            break;
     }
 }

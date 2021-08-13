@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     char function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
     char tmp_function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
     char function_arg_function_name[MAX_FUNCTION_NAME_LENGTH] = "\0";
-    char old_function_arg[MAX_FUNCTION_ARG_LENGTH] = "\0";
+    char __function_arg__[MAX_FUNCTION_ARG_LENGTH] = "\0";
     if (argc > 1)
     {
         if (argc == 4 && strcmp(argv[2], "write_bin") == false)
@@ -65,26 +65,27 @@ int main(int argc, char **argv)
                     {
                         for (j = 0; j < FUNCTION_ARG_FUNCTION_NAME_COUNT; j++)
                         {
-                            if (strcmp(old_function_arg, "\0") == false)
+                            if (strcmp(__function_arg__, "\0") == false)
                             {
-                                equstr(function_arg, old_function_arg);
+                                equstr(function_arg, __function_arg__);
                             }
                             clear_str(function_arg);
                             clear_str(function_arg_function_name);
                             strr(function_arg, function_arg_function_name, -1, strlen(function_arg_function_names[j]));
-                            strr(old_function_arg, function_arg, strlen(function_arg_function_names[j]), strlen(old_function_arg) - 1);
-                            strr(old_function_arg, function_arg_function_name, -1, strlen(function_arg_function_names[j]));
+                            strr(__function_arg__, function_arg, strlen(function_arg_function_names[j]), strlen(__function_arg__) - 1);
+                            strr(__function_arg__, function_arg_function_name, -1, strlen(function_arg_function_names[j]));
                             if (strcmp(function_arg_function_name, function_arg_function_names[j]) == false)
                             {
-                                if (old_function_arg[strlen(function_arg_function_name)] == '(' && old_function_arg[strlen(function_arg_function_name) + strlen(function_arg) + 1] == ')')
+                                if (__function_arg__[strlen(function_arg_function_name)] == '(' && __function_arg__[strlen(function_arg_function_name) + strlen(function_arg) + 1] == ')')
                                 {
                                     lang_arg(j, function_arg);
+                                    equstr(function_arg, __function_arg__);
                                 }
                             }
                             else
                             {
                                 clear_str(function_arg);
-                                equstr(old_function_arg, function_arg);
+                                equstr(__function_arg__, function_arg);
                             }
                         }
                         lang(i, function_arg);

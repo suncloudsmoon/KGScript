@@ -6,5 +6,9 @@ char function_names[FUNCTION_NAME_COUNT][MAX_FUNCTION_NAME_LENGTH] = {
     "system"
 };
 char function_arg_function_names[FUNCTION_ARG_FUNCTION_NAME_COUNT][MAX_FUNCTION_NAME_LENGTH] = {
-    "lens"
+    "lens",
+    "addi",
+    "subi",
+    "muli",
+    "divi"
 };

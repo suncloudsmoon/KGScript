@@ -20,3 +20,59 @@ char *lang_arg_lens(char *s)
     return output;
     free(output);
 }
+
+char *lang_arg_addi(char *s)
+{
+    int i;
+    int tmp_output = 0;
+    char *output = malloc(MAX_STRING_LENGTH);
+    for (i = 0; i < strgnl(s, ',') + 1; i++)
+    {
+        tmp_output += atoi(strgn(s, ',', i));
+    }
+    itoa(tmp_output, output, 10);
+    return output;
+    free(output);
+}
+
+char *lang_arg_subi(char *s)
+{
+    int i;
+    int tmp_output = 0;
+    char *output = malloc(MAX_STRING_LENGTH);
+    for (i = 0; i < strgnl(s, ',') + 1; i++)
+    {
+        tmp_output -= atoi(strgn(s, ',', i));
+    }
+    itoa(tmp_output, output, 10);
+    return output;
+    free(output);
+}
+
+char *lang_arg_muli(char *s)
+{
+    int i;
+    int tmp_output = 0;
+    char *output = malloc(MAX_STRING_LENGTH);
+    for (i = 0; i < strgnl(s, ',') + 1; i++)
+    {
+        tmp_output *= atoi(strgn(s, ',', i));
+    }
+    itoa(tmp_output, output, 10);
+    return output;
+    free(output);
+}
+
+char *lang_arg_divi(char *s)
+{
+    int i;
+    int tmp_output = 0;
+    char *output = malloc(MAX_STRING_LENGTH);
+    for (i = 0; i < strgnl(s, ',') + 1; i++)
+    {
+        tmp_output /= atoi(strgn(s, ',', i));
+    }
+    itoa(tmp_output, output, 10);
+    return output;
+    free(output);
+}
