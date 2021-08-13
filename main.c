@@ -71,10 +71,10 @@ int main(int argc, char **argv)
                             }
                             clear_str(function_arg);
                             clear_str(function_arg_function_name);
-                            strr(function_arg, function_arg_function_name, -1, strlen(function_arg_function_names[j]));
-                            strr(__function_arg__, function_arg, strlen(function_arg_function_names[j]), strlen(__function_arg__) - 1);
-                            strr(__function_arg__, function_arg_function_name, -1, strlen(function_arg_function_names[j]));
-                            if (strcmp(function_arg_function_name, function_arg_function_names[j]) == false)
+                            strr(function_arg, function_arg_function_name, -1, strlen(arg_function_names[j]));
+                            strr(__function_arg__, function_arg, strlen(arg_function_names[j]), strlen(__function_arg__) - 1);
+                            strr(__function_arg__, function_arg_function_name, -1, strlen(arg_function_names[j]));
+                            if (strcmp(function_arg_function_name, arg_function_names[j]) == false)
                             {
                                 if (__function_arg__[strlen(function_arg_function_name)] == '(' && __function_arg__[strlen(function_arg_function_name) + strlen(function_arg) + 1] == ')')
                                 {
