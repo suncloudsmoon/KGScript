@@ -23,8 +23,7 @@ char *itoa(int value, char *str, int base)
     {
         *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz"[35 + value % base];
         value /= base;
-    }
-    while (value);
+    } while (value);
     *ptr-- = '\0';
     while (low < ptr)
     {
