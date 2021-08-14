@@ -5,6 +5,7 @@
 #include "constants.h"
 #include "../functions.h"
 #include "functions/lang_functions.h"
+#include "lang_operator.h"
 
 void lang(int function_code, char *str)
 {
@@ -17,6 +18,10 @@ void lang(int function_code, char *str)
             if (is_sint(str))
             {
                 lang_printi(atoi(str));
+            }
+            if (is_soperator(str))
+            {
+                lang_printi(lang_operator(str));
             }
             break;
         case 2:

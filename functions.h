@@ -13,4 +13,5 @@ extern char *equstr(char *str, char *output);
 extern void clear_str(char *str);
 extern int is_string(char *str);
 extern int is_sint(char *str);
+extern int is_soperator(char *str);
 #endif

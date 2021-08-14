@@ -20,9 +20,9 @@ void lang_prints(char *s)
     }
 }
 
-void lang_printi(int i)
+void lang_printi(int value)
 {
-    printf("%d\n", i);
+    printf("%d\n", value);
 }
 
 void lang_system(char *s)

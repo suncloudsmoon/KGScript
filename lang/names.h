@@ -1,8 +1,8 @@
-#ifndef _LANG_FUNCTIONS_H
-# define _LANG_FUNCTIONS_H
+#ifndef _LANG_NAMES_H
+# define _LANG_NAMES_H
 #endif
 
-#ifdef _LANG_FUNCTIONS_H
+#ifdef _LANG_NAMES_H
 # include "constants.h"
 
 extern char function_names[FUNCTION_NAME_COUNT][MAX_FUNCTION_NAME_LENGTH];

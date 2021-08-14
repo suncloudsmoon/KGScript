@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "functions.h"
 #include "lang/constants.h"
+#include "lang/operators/lang_operators.h"
 
 char *itoa(int value, char *str, int base)
 {
@@ -159,7 +161,12 @@ int is_sint(char *str)
     int i = 0;
     while (str[i])
     {
-        if (str[i] >= '0' && str[i] <= '9')
+        if (is_soperator(str))
+        {
+            return false;
+            break;
+        }
+        else if (str[i] >= '0' && str[i] <= '9')
         {
             return true;
         }
@@ -168,5 +175,36 @@ int is_sint(char *str)
             return false;
             break;
         }
+    }
+}
+
+int is_coperator(char c)
+{
+    int i = 0;
+    while (operators[i])
+    {
+        if (operators[i] == c)
+        {
+            return true;
+        }
+        i++;
+    }
+}
+
+int is_soperator(char *str)
+{
+    int i = 0;
+    bool b = false;
+    while (str[i])
+    {
+        if (is_coperator(str[i]))
+        {
+            b = true;
+        }
+        if ((str[i] >= '0' && str[i] <= '9' && b) || (is_coperator(str[i])))
+        {
+            return true;
+        }
+        i++;
     }
 }
