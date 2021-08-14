@@ -3,9 +3,10 @@ Usage: `./KGScript file.kgs [options]`
 # Examples
 1. `prints("Example")`
 2. `printi(15)`
-3. `printi(lens("Example"))`
-4. `printi(addi(3,5,15))`
-5. `system("ls")`
+3. `printi(10+5)`
+4. `printi(lens("Example"))`
+5. `printi(addi(3,5,15))`
+6. `system("ls")`
 # Documentation
 Documentation of KGScript is in [KGIO](https://ariankg.github.io/kgscript-documentation/kgscript-documentation.html "KGIO Documentation").
 # Incomplete Features
