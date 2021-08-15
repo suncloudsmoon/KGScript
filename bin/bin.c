@@ -4,14 +4,14 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "../functions.h"
-#include "../decompile/decompile.h"
-#include "../lang/constants.h"
-#include "../lang/names.h"
-#include "../lang/lang.h"
-#include "../lang/decompile/lang_decompile.h"
-#include "../lang/funcgen.h"
-#include "strhex.h"
+#include <functions.h>
+
+#include <lang/constants.h>
+#include <lang/names.h>
+#include <lang/lang.h>
+#include <lang/lang_arg.h>
+#include <lang/lang_decompile.h>
+#include <lang/strhex.h>
 
 int __function_code__;
 

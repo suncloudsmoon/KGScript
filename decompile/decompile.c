@@ -1,4 +1,4 @@
-#include "../lang/names.h"
+#include <lang/names.h>
 
 char *get_func(int function_code)
 {

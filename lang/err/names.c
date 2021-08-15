@@ -1,5 +1,4 @@
-#include "../constants.h"
-#include "constants.h"
+#include <lang/constants.h>
 
 char err_names[ERR_NAME_COUNT][MAX_STRING_LENGTH] = {
     "function_not_found",

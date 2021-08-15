@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../constants.h"
-#include "../err/lang_err.h"
-#include "../../functions.h"
+#include <functions.h>
+
+#include <lang/constants.h>
+#include <lang/lang_err.h>
 
 void lang_prints(char *s)
 {

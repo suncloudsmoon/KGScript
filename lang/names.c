@@ -1,4 +1,4 @@
-#include "constants.h"
+#include <lang/constants.h>
 
 char function_names[FUNCTION_NAME_COUNT][MAX_FUNCTION_NAME_LENGTH] = {
     "prints",

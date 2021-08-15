@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "../../decompile/decompile.h"
-#include "../funcgen.h"
+#include <lang/funcgen.h>
+#include <lang/decompile.h>
 
 void lang_decompile(int function_code, char *str)
 {

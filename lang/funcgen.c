@@ -1,8 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "constants.h"
-#include "../functions.h"
+#include <lang/constants.h>
 
 char *funcgen(char *s1, char *s2)
 {

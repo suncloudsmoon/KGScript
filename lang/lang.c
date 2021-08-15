@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "constants.h"
-#include "../functions.h"
-#include "functions/lang_functions.h"
-#include "lang_operator.h"
+#include <functions.h>
+
+#include <lang/lang_operator.h>
+#include <lang/lang_functions.h>
 
 void lang(int function_code, char *str)
 {

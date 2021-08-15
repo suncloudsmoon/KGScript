@@ -1,9 +1,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "constants.h"
-#include "../functions.h"
-#include "functions/lang_arg_functions.h"
+#include <functions.h>
+
+#include <lang/constants.h>
+#include <lang/lang_arg_functions.h>
+#include <lang/lang_operator.h>
+#include <lang/lang_functions.h>
 
 void lang_arg(int function_code, char *str)
 {

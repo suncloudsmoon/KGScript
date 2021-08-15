@@ -24,7 +24,7 @@ C_SOURCES= \
 	bin/strhex.c
 
 KGScript: $(C_SOURCES)
-	$(CC) $(C_SOURCES) -o KGScript -lm
+	$(CC) $(C_SOURCES) -o KGScript -lm -Iinclude
 	objcopy --remove-section .comment KGScript
 	objcopy --remove-section .eh_frame KGScript
 

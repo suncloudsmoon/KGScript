@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "functions.h"
-#include "lang/constants.h"
-#include "lang/operators/lang_operators.h"
+#include <functions.h>
+
+#include <lang/constants.h>
+#include <lang/lang_operators.h>
 
 char *itoa(int value, char *str, int base)
 {
@@ -40,7 +41,7 @@ char *itoa(int value, char *str, int base)
 char *strg(char *str, char c)
 {
     int i = 0;
-    char *output = malloc(sizeof(char *));
+    char *output = malloc(sizeof(MAX_STRING_LENGTH));
     while (str[i])
     {
         if (str[i] == c && str[i - 1] != c)

@@ -3,13 +3,14 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "functions.h"
-#include "lang/constants.h"
-#include "lang/names.h"
-#include "lang/lang.h"
-#include "lang/lang_arg.h"
-#include "lang/err/lang_err.h"
-#include "bin/bin.h"
+#include <functions.h>
+
+#include <lang/constants.h>
+#include <lang/names.h>
+#include <lang/lang.h>
+#include <lang/lang_arg.h>
+#include <lang/lang_err.h>
+#include <lang/bin.h>
 
 int main(int argc, char **argv)
 {

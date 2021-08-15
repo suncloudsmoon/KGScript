@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../err/err.h"
+#include <lang/err.h>
 
 void lang_err(err_code err)
 {

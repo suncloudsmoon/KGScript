@@ -2,8 +2,9 @@
 #include <string.h>
 #include <math.h>
 
-#include "operators/lang_operators.h"
-#include "../functions.h"
+#include <functions.h>
+
+#include <lang/lang_operators.h>
 
 int lang_operator(char *s)
 {
